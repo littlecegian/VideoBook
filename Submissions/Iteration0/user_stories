@@ -1,0 +1,67 @@
+SIGNUP
+
+Feature - Signup as a student 
+
+so that I can upload my videos for different categories
+
+Feature - Signup as a judge
+
+so that I can judge videos uploaded by students
+
+Feature - Signup as an admin
+
+using the invite link to view results and manage the system
+
+
+
+LOGIN
+
+Feature - authenticate admin
+
+using a password
+
+
+
+JUDGE
+
+Feature - Choose choice of judging
+
+either by a category or a user name or all videos
+
+
+Feature - Give ratings to a video
+
+based on multiple parameters
+
+
+
+
+
+ADMIN_VIEW
+
+Feature - View top judged videos
+
+of all videos / per parameter
+
+
+Feature - filter results
+
+based on categories / type of judge
+
+
+
+Feature - provide the judge with videos
+
+randomly selected from the lot.
+
+
+STUDENT
+
+
+Feature - upload videos
+
+check constraints - one video per category / proper format
+
+
+
+
