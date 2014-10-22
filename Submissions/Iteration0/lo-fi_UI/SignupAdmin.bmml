@@ -2,80 +2,74 @@
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="160" y="96" w="450" h="405" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>A%20Web%20Page%0Ahttp%3A//</text>
+        <text>A%20Web%20Page%0Ahttp%3A//u-ignite.com/adminSignUp</text>
       </controlProperties>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::ButtonBar" x="260" y="213" w="254" h="27" measuredW="254" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
-      <controlProperties>
-        <selectedIndex>2</selectedIndex>
-        <text>Contestant%2C%20Judge%2C%20Administrator</text>
-      </controlProperties>
-    </control>
-    <control controlID="2" controlTypeID="com.balsamiq.mockups::Title" x="198" y="170" w="-1" h="-1" measuredW="375" measuredH="43" zOrder="2" locked="false" isInGroup="-1">
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Title" x="198" y="183" w="-1" h="-1" measuredW="375" measuredH="43" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Welcome%20to%20U-Ignite</text>
       </controlProperties>
     </control>
-    <control controlID="3" controlTypeID="com.balsamiq.mockups::TextInput" x="408" y="247" w="79" h="-1" measuredW="79" measuredH="26" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::TextInput" x="408" y="247" w="79" h="-1" measuredW="79" measuredH="26" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
         <size>12</size>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="208" y="250" w="52" h="-1" measuredW="32" measuredH="20" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="208" y="250" w="52" h="-1" measuredW="32" measuredH="20" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <size>12</size>
         <text>Name</text>
       </controlProperties>
     </control>
-    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="208" y="278" w="150" h="-1" measuredW="78" measuredH="20" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="208" y="278" w="150" h="-1" measuredW="78" measuredH="20" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <size>12</size>
         <text>Email%20Address</text>
       </controlProperties>
     </control>
-    <control controlID="9" controlTypeID="com.balsamiq.mockups::TextInput" x="408" y="275" w="79" h="-1" measuredW="79" measuredH="26" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::TextInput" x="408" y="275" w="79" h="-1" measuredW="79" measuredH="26" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <size>12</size>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::TextInput" x="408" y="304" w="-1" h="-1" measuredW="79" measuredH="26" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::TextInput" x="408" y="304" w="-1" h="-1" measuredW="79" measuredH="26" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="11" controlTypeID="com.balsamiq.mockups::Button" x="372" y="433" w="115" h="27" measuredW="70" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Button" x="372" y="433" w="115" h="27" measuredW="70" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Sign%20Up</text>
       </controlProperties>
     </control>
-    <control controlID="12" controlTypeID="com.balsamiq.mockups::Label" x="208" y="307" w="67" h="-1" measuredW="56" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Label" x="208" y="307" w="67" h="-1" measuredW="56" measuredH="21" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Password</text>
       </controlProperties>
     </control>
-    <control controlID="13" controlTypeID="com.balsamiq.mockups::Label" x="208" y="369" w="185" h="-1" measuredW="175" measuredH="21" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Label" x="208" y="369" w="185" h="-1" measuredW="175" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Enter%20the%20code%20sent%20via%20email</text>
       </controlProperties>
     </control>
-    <control controlID="17" controlTypeID="com.balsamiq.mockups::Label" x="208" y="338" w="108" h="-1" measuredW="103" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::Label" x="208" y="338" w="108" h="-1" measuredW="103" measuredH="21" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Retype%20Password</text>
       </controlProperties>
     </control>
-    <control controlID="18" controlTypeID="com.balsamiq.mockups::TextInput" x="408" y="335" w="-1" h="-1" measuredW="79" measuredH="26" zOrder="12" locked="false" isInGroup="-1">
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::TextInput" x="408" y="335" w="-1" h="-1" measuredW="79" measuredH="26" zOrder="11" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="19" controlTypeID="com.balsamiq.mockups::TextInput" x="408" y="366" w="-1" h="-1" measuredW="79" measuredH="26" zOrder="13" locked="false" isInGroup="-1">
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::TextInput" x="408" y="366" w="-1" h="-1" measuredW="79" measuredH="26" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="20" controlTypeID="com.balsamiq.mockups::Label" x="208" y="405" w="382" h="-1" measuredW="377" measuredH="18" zOrder="14" locked="false" isInGroup="-1">
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::Label" x="208" y="405" w="382" h="-1" measuredW="377" measuredH="18" zOrder="13" locked="false" isInGroup="-1">
       <controlProperties>
         <size>10</size>
         <text>Note%20-%20You%20should%20register%20with%20the%20same%20email%20address%20to%20which%20the%20code%20was%20sent</text>
