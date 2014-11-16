@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  video_id: 
+  judge_id: 
+  criteria_id: 
+  score: 9.99
+
+two:
+  video_id: 
+  judge_id: 
+  criteria_id: 
+  score: 9.99
