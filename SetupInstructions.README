@@ -1,0 +1,10 @@
+Have to install Mysql
+Have to install nodejs
+Have to install latest ruby
+bundle
+rake db:create
+rake db:migrate
+
+
+https://github.com/deivid-rodriguez/byebug
+https://rubygems.org/gems/byebug

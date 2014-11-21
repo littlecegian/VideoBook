@@ -1,10 +1,15 @@
 class SessionsController < ApplicationController
-  def new
-  end
+	skip_before_action :verify_authenticity_token
 
-  def create
-  end
+	def new
+		@placeholder = "UIN"
+		@login_type = params[:login_type] || "student"
+	end
 
-  def destroy
-  end
+	def create
+		byebug
+	end
+
+	def destroy
+	end
 end

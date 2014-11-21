@@ -15,3 +15,17 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+
+/************ LoginPage ***********/
+var LoginPage = {
+    changePlaceHolder: function(value){
+    	if(value=="student")
+    		jQuery("#signin_val").attr("placeholder", "UIN");
+    	else
+    		if(value == "judge")
+    		jQuery("#signin_val").attr("placeholder", "Email");
+    	else
+    		jQuery("#signin_val").attr("placeholder", "");
+    }
+}
