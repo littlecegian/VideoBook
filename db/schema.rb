@@ -67,7 +67,8 @@ ActiveRecord::Schema.define(version: 20141116231408) do
   add_index "judge_categories", ["judge_id"], name: "index_judge_categories_on_judge_id", using: :btree
 
   create_table "judges", force: true do |t|
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "email"
     t.boolean  "tamu"
     t.string   "preference"
@@ -79,7 +80,8 @@ ActiveRecord::Schema.define(version: 20141116231408) do
 
   create_table "students", force: true do |t|
     t.integer  "uin",        limit: 8
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"

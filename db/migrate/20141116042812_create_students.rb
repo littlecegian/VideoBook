@@ -2,7 +2,8 @@ class CreateStudents < ActiveRecord::Migration
   def change
     create_table :students do |t|
       t.integer :uin, limit: 8
-      t.string :name
+      t.string :first_name
+      t.string :last_name
       t.string :email
 
       t.timestamps
