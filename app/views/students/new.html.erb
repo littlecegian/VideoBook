@@ -1,2 +1,26 @@
-<h1>Students#new</h1>
-<p>Find me in app/views/students/new.html.erb</p>
+<div class="container" id="judge_signup_form_container">
+	<div class="row">
+		<div class="form_container col-md-6 col-md-offset-3">
+			<form action="r" method="post" accept-charset="utf-8" class="form" role="form" id="signup_form">   
+				<legend>Sign Up as Student</legend>
+				<div class="row">
+					<div class="col-xs-6 col-md-6">
+						<input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"  />                        
+					</div>
+					<div class="col-xs-6 col-md-6">
+						<input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"  />                        
+					</div>
+				</div>
+				<div class="input_row">
+					<input type="text" name="UIN" value="" class="form-control input-lg" placeholder="Your UIN"  />
+				</div>
+				<div class="input_row">
+					<input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email"  />
+				</div>
+				<button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">
+					Create my account
+				</button>
+			</form>          
+		</div>
+	</div>
+</div>
