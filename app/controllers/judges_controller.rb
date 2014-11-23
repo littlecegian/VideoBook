@@ -12,5 +12,6 @@ class JudgesController < ApplicationController
   end
 
   def show
+    @videos = Judge.find(id).get_videos()
   end
 end
