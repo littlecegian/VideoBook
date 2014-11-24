@@ -48,3 +48,4 @@ gem 'cancan'
 # Use debugger
 gem 'byebug', group: [:development, :test]
 
+gem 'simple_form'

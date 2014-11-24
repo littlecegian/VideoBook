@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
 	def new
 		@placeholder = params[:login_type] == "judge" ? "Email" : "UIN"
-		@login_type = params[:login_type] || "judge"
+		@login_type = params[:login_type] || "student" #default login is for student
 	end
 
 	def create

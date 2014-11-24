@@ -1,30 +1,24 @@
 <div class="container" id="judge_signup_form_container">
 	<div class="row">
 		<div class="form_container col-md-6 col-md-offset-3">
-			<form action="r" method="post" accept-charset="utf-8" class="form" role="form" id="signup_form">   
+			<%= simple_form_for Judge.new, :url => judges_url, :method => :post, :builder => FormWithValidations, :html => {:id => "signup_form", :class => "form"} do |f| %>
 				<legend>Sign Up as Judge</legend>
 				<div class="row">
 					<div class="col-xs-6 col-md-6">
-						<input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"  />                        
+						<%= f.text_field :first_name, :class => 'form-control input-lg', :placeholder => 'First Name' %>
 					</div>
 					<div class="col-xs-6 col-md-6">
-						<input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"  />                        
+						<%= f.text_field :last_name, :class => 'form-control input-lg', :placeholder => 'Last Name' %>
 					</div>
 				</div>
-				<input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email"  />
+				<%= f.text_field :email, :class => 'form-control input-lg', :placeholder => 'Email' %>
 				<div class="radio_row">
-					<label> Institution : </label>                    
-					<label class="radio-inline">
-						<input type="radio" name="college" value="I" id=internal /> Texas A & M
-					</label>
-					<label class="radio-inline">
-						<input type="radio" name="college" value="O" id=external /> External
-					</label>
+					<label> Institution : </label>
+					<label class="radio-inline"> <%= f.radio_button(:tamu, "1") %> Texas A & M </label>
+					<label class="radio-inline"> <%= f.radio_button(:tamu, "0") %> External </label>
 				</div>
-				<button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">
-					Create my account
-				</button>
-			</form>          
+				<%= f.submit "Signup as Judge", :class => 'btn btn-lg btn-primary btn-block signup-btn' %>
+			<% end %>         
 		</div>
 	</div>
 </div>
