@@ -3,7 +3,7 @@ class JudgesController < ApplicationController
   end
 
   def create
-    judge = Judge.new(judge_params)
+    judge = Judge.new(judge_params)    
     if(judge.valid?)
       judge.save!
       flash[:notice] = "New Judge Account has been created. Please login to continue"
@@ -21,7 +21,22 @@ class JudgesController < ApplicationController
   end
 
   def show
-    @videos = Judge.find(id).get_videos()
+    #@videos = Judge.find(id).get_videos()
+    config=YAML.load_file('config/applicationconfig.yml')
+    noofvideos = config["number_of_videos_per_load"]    
+    #noofvideos = 3
+    judgepreference = Judge.getpreference(params[:judgeid])
+    @idofjudge = params[:judgeid]
+    #byebug
+    if judgepreference.preference == "all"
+        @videolist,@videoinfo = Video.getrandomvideos(noofvideos,"all")
+    elsif judgepreference.preference == "categories"
+        preferredcategories = JudgeCategory.getpreferredcategories(params[:judgeid])
+        @videolist,@videoinfo = Video.getrandomvideos(noofvideos,"categories",preferredcategories)
+    elsif judgepreference.preference == "student"
+        
+    end
+    #get_preference(params:)
   end
 
   private

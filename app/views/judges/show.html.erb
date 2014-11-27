@@ -1,2 +1,30 @@
-<h1>Judges#show</h1>
-<p>Find me in app/views/judges/show.html.erb</p>
+ <table>
+  <tr>
+    <th><pre>Title</pre></th>
+    <th><pre>URL</pre></th>
+    <th><pre>Uploaded by</pre></th>
+    <th><pre>Category</pre></th>
+    <th><pre>Date</pre></th>
+    <th><pre>Description</pre></th>
+    <th></th>
+  </tr>
+ 
+<% @videolist.each_with_index do |video,index| %>
+  <tr>
+    <td><pre><%= video.name %></pre></td>
+    <td><pre><%= video.url %></pre></td>
+    <td><pre><%= @videoinfo.at(index).at(0) %></pre></td>
+    <td><pre><%= @videoinfo.at(index).at(1) %></pre></td>
+  	<td><pre><%= video.upload_date %></pre></td>
+  	<td><pre><%= video.description %></pre></td>
+  </tr>
+<% end %>
+</table>
+<!--<p align="center">
+	<button class="showmorebutton" style="background-color:#1E90FF">Show More</button>
+ 	 <a href="#" class="showmorebutton" style="border: 5px;">Show More</a> 
+ </p>
+ -->
+ <%= button_to "Show More", showvideos_path, :method => :get,:params => {:judgeid => @idofjudge} %> 
+
+<br>

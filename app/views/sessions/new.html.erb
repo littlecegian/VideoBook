@@ -1,4 +1,4 @@
-<div id="signin_form" class="container">
+    <div id="signin_form" class="container">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
             <h1 class="text-center login-title">Sign in to continue to VideoBook</h1>
@@ -7,7 +7,7 @@
                     alt="">
                 <form class="form-signin" action="/sessions" method="post">
 
-	                <input id="signin_val" type="text" class="form-control" placeholder="<%= @placeholder %>" required autofocus>
+	                <input id="signin_val" name="value" type="text" class="form-control" placeholder="<%= @placeholder %>" required autofocus>
 	                <!-- <input type="hidden" name="login_type" value="<%= @login_type %>" > -->
 	                <%#= select("sessions", "login_type", [['Student', 'student'],['Judge', 'judge']], selected: @login_type { include_blank: true }) %>
 	                <%= select_tag "login_type", options_for_select(['student', 'judge'], @login_type), :onchange => "LoginPage.changePlaceHolder(this.value);", :class => "form-control login_type" %>

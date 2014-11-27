@@ -13,4 +13,13 @@ class Judge < ActiveRecord::Base
     def set_preference
     	self.preference ||= "all"
     end
+
+    def self.getpreference(judgeid)
+    	return Judge.where(["id = ?", judgeid]).select("preference").first
+    end    
+
+    def self.isjudgepresent(emailid)
+    	return Judge.find_by_email(emailid)
+    end
+
 end

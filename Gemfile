@@ -49,3 +49,5 @@ gem 'cancan'
 gem 'byebug', group: [:development, :test]
 
 gem 'simple_form'
+
+gem 'email_regex'
