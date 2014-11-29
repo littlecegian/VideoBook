@@ -25,6 +25,9 @@ class StudentsController < ApplicationController
   def show
   end
 
+  def dashboard
+  end
+
   private
 
   def student_create_params

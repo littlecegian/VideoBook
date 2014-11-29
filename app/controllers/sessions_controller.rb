@@ -7,25 +7,25 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-
 		#If login is judge, check if entered email id is valid and already registered
+		login_id = params[:login_id]
 		if params[:login_type] == "judge"
-			emailid = params[:value]		
-			if  emailid =~ EmailRegex::EMAIL_ADDRESS_REGEX  				 
-   				 judgeuser = Judge.isjudgepresent(emailid)   				
-   				 if judgeuser
-				 	redirect_to(showvideos_path(:judgeid => judgeuser))
-				 else
-					flash.now[:error] = "Please register with your email!"  
-					render :action => :new
-				 end    						
+			judge = Judge.find_by_email(login_id)
+			if judge
+				redirect_to(showvideos_path(:judgeid => judgeuser))
 			else
-				flash.now[:error] = "Please enter a valid email address!"  
-				render :action => :new    			
+				flash.now[:error] = "Invalid Email Id"
+				render :action => :new
 			end
-			
+		else
+			student = Student.find_by_uin(login_id)
+			if student
+				redirect_to student_dashboard_path(student)
+			else
+				flash.now[:error] = "Invalid UIN"
+				render :action => :new
+			end
 		end
-
 	end
 
 	def destroy

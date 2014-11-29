@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :students
 
+  get 'students/:id/dashboard' => 'students#dashboard', as: 'student_dashboard'
+
   resources :judges
   
   # get 'sessions/new'

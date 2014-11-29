@@ -7,7 +7,7 @@
                     alt="">
                 <form class="form-signin" action="/sessions" method="post">
 
-	                <input id="signin_val" name="value" type="text" class="form-control" placeholder="<%= @placeholder %>" required autofocus>
+	                <input id="signin_val" name="login_id" type="text" class="form-control" placeholder="<%= @placeholder %>" required autofocus>
 	                <!-- <input type="hidden" name="login_type" value="<%= @login_type %>" > -->
 	                <%#= select("sessions", "login_type", [['Student', 'student'],['Judge', 'judge']], selected: @login_type { include_blank: true }) %>
 	                <%= select_tag "login_type", options_for_select(['student', 'judge'], @login_type), :onchange => "LoginPage.changePlaceHolder(this.value);", :class => "form-control login_type" %>

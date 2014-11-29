@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141116231408) do
+ActiveRecord::Schema.define(version: 20141129201753) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20141116231408) do
   add_index "judges", ["email"], name: "index_judges_on_email", unique: true, using: :btree
 
   create_table "students", force: true do |t|
-    t.integer  "uin",        limit: 8
+    t.string   "uin"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
