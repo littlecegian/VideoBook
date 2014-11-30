@@ -26,6 +26,7 @@ class StudentsController < ApplicationController
   end
 
   def dashboard
+    @username = Student.find_by_id(session[:current_user])
   end
 
   private

@@ -13,6 +13,8 @@ class SessionsController < ApplicationController
 			judge = Judge.find_by_email(login_id)
 			if judge
 				redirect_to(showvideos_path(:judgeid => judgeuser))
+				session[:current_user] = judge.id
+				session[:current_user_type] = 'judge'
 			else
 				flash.now[:error] = "Invalid Email Id"
 				render :action => :new
@@ -21,6 +23,8 @@ class SessionsController < ApplicationController
 			student = Student.find_by_uin(login_id)
 			if student
 				redirect_to student_dashboard_path(student)
+				session[:current_user] = student.id
+				session[:current_user_type] = 'student'
 			else
 				flash.now[:error] = "Invalid UIN"
 				render :action => :new
