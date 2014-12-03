@@ -1,0 +1,2 @@
+module VideoRatingsHelper
+end

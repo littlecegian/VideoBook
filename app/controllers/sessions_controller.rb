@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 		if params[:login_type] == "judge"
 			judge = Judge.find_by_email(login_id)
 			if judge
-				redirect_to(showvideos_path(:judgeid => judgeuser))
+				redirect_to judge_path(judge)
 				session[:current_user] = judge.id
 				session[:current_user_type] = 'judge'
 			else

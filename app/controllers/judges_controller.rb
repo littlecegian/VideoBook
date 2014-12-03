@@ -25,13 +25,14 @@ class JudgesController < ApplicationController
     config=YAML.load_file('config/applicationconfig.yml')
     noofvideos = config["number_of_videos_per_load"]    
     #noofvideos = 3
-    judgepreference = Judge.getpreference(params[:judgeid])
-    @idofjudge = params[:judgeid]
+    @judge = Judge.find(params[:id])
+    judgepreference = Judge.getpreference(params[:id])
+    @idofjudge = params[:id]
     #byebug
     if judgepreference.preference == "all"
         @videolist,@videoinfo = Video.getrandomvideos(noofvideos,"all")
     elsif judgepreference.preference == "categories"
-        preferredcategories = JudgeCategory.getpreferredcategories(params[:judgeid])
+        preferredcategories = JudgeCategory.getpreferredcategories(params[:id])
         @videolist,@videoinfo = Video.getrandomvideos(noofvideos,"categories",preferredcategories)
     elsif judgepreference.preference == "student"
         

@@ -1,0 +1,90 @@
+<h1>Videos#show</h1>
+<p>Find me in app/views/videos/show.html.erb</p>
+<div> video will be shown here</div>
+
+<div align ="center"; style="width:400px; margin-right:auto;margin-top: 400px; margin-left:auto;">
+	
+	<form action="/video_ratings" method="post">
+	<table name ="table_rating" cellpadding="4" width="500" border="0">
+  	
+  	<tr>
+  		<td>
+  		<font size="4">Criteria One</font>
+  		</td>
+  		<td>
+	    <input type="radio" name="criteria_1" value="1" id="one_one" />
+	    <label for="one_one">1</label>
+		</td>
+		<td>
+	    <input type="radio"  name="criteria_1" value="2" id="one_two" />
+	    <label for="one_two">2</label>
+		</td>
+		<td>
+	    <input type="radio"  name="criteria_1" value="3" id="one_three" />
+	    <label for="one_three">3</label>
+	    </td>
+		<td>
+	    <input type="radio"  name="criteria_1" value="4" id="one_four" />
+	    <label for="one_four">4</label>
+	    </td>
+		<td>
+	    <input type="radio"  name="criteria_1" value="5" id="one_five" />
+	    <label for="one_five">5</label>
+	    </td>
+	</tr>
+ 
+    <tr style="height:100px;">
+  		<td>
+  		<font size="4">Criteria Two</font>
+  		</td>
+  		<td>
+	    <input type="radio" name="criteria_2" value="1" id="two_one" />
+	    <label for="two_one">1</label>
+		</td>
+		<td>
+	    <input type="radio"  name="criteria_2" value="2" id="two_two" />
+	    <label for="two_two">2</label>
+		</td>
+		<td>
+	    <input type="radio"  name="criteria_2" value="3" id="two_three" />
+	    <label for="two_three">3</label>
+	    </td>
+		<td>
+	    <input type="radio"  name="criteria_2" value="4" id="two_four" />
+	    <label for="two_four">4</label>
+	    </td>
+		<td>
+	    <input type="radio"  name="criteria_2" value="5" id="two_five" />
+	    <label for="two_four">5</label>
+	    </td>
+	</tr>
+	<tr style="height:40px;">
+  		<td>
+  		<font size="4">Criteria Three</font>
+  		</td>
+  		<td>
+	    <input type="radio" name="criteria_3" value="1" id="three_one" />
+	    <label for="three_one">1</label>
+		</td>
+		<td>
+	    <input type="radio"  name="criteria_3" value="2" id="three_two" />
+	    <label for="three_two">2</label>
+		</td>
+		<td>
+	    <input type="radio"  name="criteria_3" value="3" id="three_three" />
+	    <label for="three_three">3</label>
+	    </td>
+		<td>
+	    <input type="radio"  name="criteria_3" value="4" id="three_four" />
+	    <label for="three_four">4</label>
+	    </td>
+		<td>
+	    <input type="radio"  name="criteria_3" value="5" id="three_five" />
+	    <label for="three_five">5</label>
+	    </td>
+	</tr>
+	    <input type="hidden" name="video_id" value= <%= @video.id %> >
+</table>
+<button type="submit" style="margin-top:10px">Submit</button>
+</form>
+</div>

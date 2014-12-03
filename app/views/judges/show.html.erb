@@ -11,7 +11,7 @@
  
 <% @videolist.each_with_index do |video,index| %>
   <tr>
-    <td><pre><%= video.name %></pre></td>
+    <td><pre><%= link_to(video.name, video_path(video.id)) %></pre></td>
     <td><pre><%= video.url %></pre></td>
     <td><pre><%= @videoinfo.at(index).at(0) %></pre></td>
     <td><pre><%= @videoinfo.at(index).at(1) %></pre></td>
@@ -25,6 +25,6 @@
  	 <a href="#" class="showmorebutton" style="border: 5px;">Show More</a> 
  </p>
  -->
- <%= button_to "Show More", showvideos_path, :method => :get,:params => {:judgeid => @idofjudge} %> 
+ <%= button_to "Show More", judge_path(@judge), :method => :get %> 
 
 <br>

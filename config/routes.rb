@@ -2,7 +2,10 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :admins
+
+  resources :video_ratings
   
+  resources :videos
 
   resources :sessions
 
@@ -23,7 +26,6 @@ Rails.application.routes.draw do
 
   root to: "sessions#new"
 
-  get '/judges/show' => 'judges#show', as: 'showvideos'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
