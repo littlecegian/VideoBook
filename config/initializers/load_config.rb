@@ -1,0 +1,1 @@
+APP_CONFIG = YAML.load_file("#{Rails.root.to_s}/config/settings.yml")[ENV['RAILS_ENV']].symbolize_keys

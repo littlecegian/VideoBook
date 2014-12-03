@@ -22,8 +22,7 @@ class JudgesController < ApplicationController
 
   def show
     #@videos = Judge.find(id).get_videos()
-    config=YAML.load_file('config/applicationconfig.yml')
-    noofvideos = config["number_of_videos_per_load"]    
+    noofvideos = APP_CONFIG[:number_of_videos_per_load]
     #noofvideos = 3
     @judge = Judge.find(params[:id])
     judgepreference = Judge.getpreference(params[:id])
