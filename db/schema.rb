@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129201753) do
+ActiveRecord::Schema.define(version: 20141204235845) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -108,13 +108,14 @@ ActiveRecord::Schema.define(version: 20141129201753) do
     t.string   "url"
     t.integer  "category_id"
     t.integer  "student_id"
-    t.integer  "length"
-    t.string   "file_size"
-    t.string   "file_type"
-    t.datetime "upload_date"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "video_file_name"
+    t.string   "video_content_type"
+    t.integer  "video_file_size"
+    t.datetime "video_updated_at"
+    t.text     "video_meta"
   end
 
   add_index "videos", ["category_id"], name: "index_videos_on_category_id", using: :btree

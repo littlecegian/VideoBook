@@ -51,3 +51,9 @@ gem 'byebug', group: [:development, :test]
 gem 'simple_form'
 
 gem 'email_regex'
+
+gem 'google-api-client'
+
+gem 'httpclient'
+
+gem 'paperclip-ffmpeg'

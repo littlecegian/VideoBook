@@ -1,2 +1,11 @@
-development:
+development: &non_production_settings
   number_of_videos_per_load: 4
+
+test: &test
+  <<: *non_production_settings
+
+production: &production
+  number_of_videos_per_load: 5
+
+cucumber: &cucumber
+  <<: *test
