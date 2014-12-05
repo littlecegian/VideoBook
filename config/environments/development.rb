@@ -39,5 +39,5 @@ Rails.application.configure do
   #paperclip options for video storage
   Paperclip.options[:command_path] = "/usr/local/bin/"
   HOST_NAME = "127.0.0.1:3000"
-  VIDEO_STORAGE_OPTIONS = {:processors => [:ffmpeg], :url => "system/:attachment/:id/:basename.:extension"}
+  VIDEO_STORAGE_OPTIONS = {:processors => [:ffmpeg], :url => "/system/:attachment/:id/:basename.:extension"}
 end

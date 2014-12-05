@@ -7,6 +7,7 @@ class Video < ActiveRecord::Base
   validates_attachment_presence :video, :message => 'Video File Required'
   validates_attachment_content_type :video, :content_type => VideoAttachment::VALID_CONTENT_TYPES, :message => 'INVALID CONTENT TYPE'
   validates_attachment_size :video, :less_than => VideoAttachment::MAX_SIZE
+  after_validation :clean_paperclip_errors
 
 
   #Get specified number of random videos(noofvideos) for the givrn category
@@ -115,5 +116,11 @@ class Video < ActiveRecord::Base
 
   def self.getrandomnumber(min,max)
   		Random.new.rand(min..max) 
+  end
+
+  private
+
+  def clean_paperclip_errors
+    errors.delete(:video)
   end
 end
