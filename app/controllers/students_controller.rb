@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   skip_before_filter :verify_authenticity_token  
+  skip_before_action :require_login, only: [:new, :create]
 
   def new
   end
@@ -26,7 +27,9 @@ class StudentsController < ApplicationController
   end
 
   def dashboard
-    @username = Student.find_by_id(session[:current_user])
+    @student = current_user
+    @pre_upload_info = {}
+    @video = @student.videos.new
   end
 
   private

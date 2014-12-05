@@ -1,2 +1,17 @@
 <h1>Students#dashboard</h1>
 <p>Find me in app/views/students/dashboard.html.erb</p>
+<%= form_for @video, :url => videos_url, :method => :post, :builder => FormWithValidations, :html => {:id => "video_upload", :class => "form", :multipart => true} do |f| %>
+  	<div class="form-group">
+    	<%= f.text_field :name, :class => 'form-control input-lg', :placeholder => 'Title', :required => true %>
+  	</div>
+    <%= f.hidden_field :student_id, :value => @video.student_id %>
+  	<div class="form-group">
+    	<%= f.text_field :description, :class => 'form-control input-lg', :placeholder => 'Description', :required => true %>
+  	</div>
+
+  	<div class="form-group">
+		  <%= f.file_field :video, required: true %>
+	  </div>
+    <%= f.select :category_id, Category.all.collect{|c| [c.name, c.id]}, :class => 'form-control input-lg', :required => true %>
+	<%= f.submit %>
+<% end %>

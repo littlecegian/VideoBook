@@ -1,6 +1,13 @@
 class Video < ActiveRecord::Base
+
   belongs_to :category
   belongs_to :student  
+  has_attached_file :video, VIDEO_STORAGE_OPTIONS
+  
+  validates_attachment_presence :video, :message => 'Video File Required'
+  validates_attachment_content_type :video, :content_type => VideoAttachment::VALID_CONTENT_TYPES, :message => 'INVALID CONTENT TYPE'
+  validates_attachment_size :video, :less_than => VideoAttachment::MAX_SIZE
+
 
   #Get specified number of random videos(noofvideos) for the givrn category
   #If category = "all" then extraparam is nil
