@@ -62,7 +62,7 @@ class Video < ActiveRecord::Base
           #records_array[index].upload_date = records_array[index].upload_date.chomp('UTC')
 	    		onerecorddetails.push(addstudentname(records_array.at(index)))
 	    		onerecorddetails.push(addcategoryname(records_array.at(index).category_id))
-          onerecorddetails.push(getvideoduration(records_array.at(index).id))
+          #onerecorddetails.push(getvideoduration(records_array.at(index).id))
 	    		videoinfo.push(onerecorddetails)
 	    		#records_array.at(index)[:studentname]= addstudentname(records_array,index)
 	    		result_array.push(records_array.at(index))
@@ -77,7 +77,7 @@ class Video < ActiveRecord::Base
     			onerecorddetails = Array.new   		
 	    		onerecorddetails.push(addstudentname(record))
 	    		onerecorddetails.push(addcategoryname(record.category_id))
-          onerecorddetails.push(getvideoduration(record.id))
+          #onerecorddetails.push(getvideoduration(record.id))
 	    		videoinfo.push(onerecorddetails)
     		end
     		tmp_array = getjudgedvideos(category,noofvideos,records_array.length,extraparam)
@@ -86,7 +86,7 @@ class Video < ActiveRecord::Base
     			onerecorddetails = Array.new   		
 	    		onerecorddetails.push(addstudentname(tmp_record))
 	    		onerecorddetails.push(addcategoryname(tmp_record.category_id))
-          onerecorddetails.push(getvideoduration(tmp_record.id))
+          #onerecorddetails.push(getvideoduration(tmp_record.id))
 	    		videoinfo.push(onerecorddetails)
     		end    	
     	#If number of unjudged videos equal to required number,	then just return that set alone
@@ -96,7 +96,7 @@ class Video < ActiveRecord::Base
     			onerecorddetails = Array.new   		
 	    		onerecorddetails.push(addstudentname(record))
 	    		onerecorddetails.push(addcategoryname(record.category_id))
-          onerecorddetails.push(getvideoduration(record.id))
+          #onerecorddetails.push(getvideoduration(record.id))
 	    		videoinfo.push(onerecorddetails)
     		end
     	end
@@ -145,10 +145,12 @@ class Video < ActiveRecord::Base
   		return result.join("")
   end
 
-  def self.getvideoduration(videoid)
-      result = Video.where(id: videoid).pluck(:length)
-      return result.join("")      
-  end
+
+ # def self.getvideoduration(videoid)
+  #    result = Video.where(id: videoid).pluck(:length)
+   #   return result.join("")      
+  #end
+
 
   def self.getrandomnumber(min,max)
   		Random.new.rand(min..max) 

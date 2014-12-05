@@ -4,9 +4,9 @@
  <div id="sidebar">
  <br>
 <font size="5"><%= link_to(video.name, video_path(video.id)) %></font>
-<!-- <font size="3">Uploaded by:<%= @videoinfo.at(index).at(0) %></font> -->
-<br><font size="2.5"><b>Duration:</b> <%= @videoinfo.at(index).at(2) %> min</font>
-<br><font size="2.5"><b>Upload Date:</b> <%= video.upload_date %></font>
+<!-- <font size="3">Uploaded by:<%= @videoinfo.at(index).at(0) %></font> 
+<br><font size="2.5"><b>Duration:</b> <%= @videoinfo.at(index).at(2) %> min</font>-->
+<br><font size="2.5"><b>Upload Date:</b> <%= video.video_updated_at %></font>
 </div>
 <div id="content">
   <br><font size="2.5"><b>Uploaded by:</b> <%= @videoinfo.at(index).at(0) %></font>
