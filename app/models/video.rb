@@ -6,9 +6,9 @@ class Video < ActiveRecord::Base
   #If category = "all" then extraparam is nil
   #else if category = "categories" or "studentid" then extraparam will have all categories/student ids
   def self.getrandomvideos(noofvideos,category,extraparam=[])
-  		if category == "all"
-	    	getquery = "select * from videos where id not in (select video_id from video_ratings)"
-	    	records_array = Video.find_by_sql(getquery)
+  	if category == "all"
+	    getquery = "select * from videos where id not in (select video_id from video_ratings)"
+	    records_array = Video.find_by_sql(getquery)
 			return getvideodetails(records_array,noofvideos,category)   
 		elsif category == "categories"
 			#Construct query to select the unjudged videos from the specified categories
@@ -23,8 +23,22 @@ class Video < ActiveRecord::Base
 				getquery = getquery + ") and id not in (select video_id from video_ratings)"
 			end
 	    	records_array = Video.find_by_sql(getquery)
-			return getvideodetails(records_array,noofvideos,category,extraparam)
-		end 	       
+			return getvideodetails(records_array,noofvideos,category,extraparam)			
+    elsif category == "students"
+        #Construct query to select the unjudged videos uploaded by the specified student ids
+      getquery = "select * from videos where (student_id =  "
+      extraparam.each_with_index do |eachcategory,index|
+        if(index == 0)
+          getquery = getquery + eachcategory.to_s
+        else
+          getquery = getquery + " or student_id = "+ eachcategory.to_s
+        end
+        #This condition to make sure we select only unjudged videos
+        getquery = getquery + ") and id not in (select video_id from video_ratings)"
+      end
+        records_array = Video.find_by_sql(getquery)
+      return getvideodetails(records_array,noofvideos,category,extraparam)
+    end       
   end
 
   #Select randomly the specified number of videos for display
@@ -38,8 +52,10 @@ class Video < ActiveRecord::Base
     		noofvideos.times do    			
 	    		index = getrandomnumber(0,records_array.length-1)	 
 	    		onerecorddetails = Array.new   		
+          #records_array[index].upload_date = records_array[index].upload_date.chomp('UTC')
 	    		onerecorddetails.push(addstudentname(records_array.at(index)))
 	    		onerecorddetails.push(addcategoryname(records_array.at(index).category_id))
+          onerecorddetails.push(getvideoduration(records_array.at(index).id))
 	    		videoinfo.push(onerecorddetails)
 	    		#records_array.at(index)[:studentname]= addstudentname(records_array,index)
 	    		result_array.push(records_array.at(index))
@@ -54,6 +70,7 @@ class Video < ActiveRecord::Base
     			onerecorddetails = Array.new   		
 	    		onerecorddetails.push(addstudentname(record))
 	    		onerecorddetails.push(addcategoryname(record.category_id))
+          onerecorddetails.push(getvideoduration(record.id))
 	    		videoinfo.push(onerecorddetails)
     		end
     		tmp_array = getjudgedvideos(category,noofvideos,records_array.length,extraparam)
@@ -62,6 +79,7 @@ class Video < ActiveRecord::Base
     			onerecorddetails = Array.new   		
 	    		onerecorddetails.push(addstudentname(tmp_record))
 	    		onerecorddetails.push(addcategoryname(tmp_record.category_id))
+          onerecorddetails.push(getvideoduration(tmp_record.id))
 	    		videoinfo.push(onerecorddetails)
     		end    	
     	#If number of unjudged videos equal to required number,	then just return that set alone
@@ -71,6 +89,7 @@ class Video < ActiveRecord::Base
     			onerecorddetails = Array.new   		
 	    		onerecorddetails.push(addstudentname(record))
 	    		onerecorddetails.push(addcategoryname(record.category_id))
+          onerecorddetails.push(getvideoduration(record.id))
 	    		videoinfo.push(onerecorddetails)
     		end
     	end
@@ -84,14 +103,27 @@ class Video < ActiveRecord::Base
   			return Video.order("RAND()").first(noofvideos-existinglength)
   		elsif category == "categories"
   			getquery = "select * from videos where category_id =  "
-			extraparam.each_with_index do |eachcategory,index|
-				if(index == 0)
-					getquery = getquery + eachcategory.to_s
-				else
-					getquery = getquery + " or category_id = "+ eachcategory.to_s
-				end
-			end
-			return Video.find_by_sql(getquery).order("RAND()").first(noofvideos-existinglength)
+			  extraparam.each_with_index do |eachcategory,index|
+				  if(index == 0)
+				  	getquery = getquery + eachcategory.to_s
+				  else
+					  getquery = getquery + " or category_id = "+ eachcategory.to_s
+				  end
+			  end
+      elsif category == "students"
+        getquery = "select * from videos where student_id =  "
+        extraparam.each_with_index do |eachcategory,index|
+          if(index == 0)
+            getquery = getquery + eachcategory.to_s
+          else
+            getquery = getquery + " or student_id = "+ eachcategory.to_s
+          end
+        end                
+      if(Video.find_by_sql(getquery).empty?)
+         return Video.find_by_sql(getquery)
+      else
+			   return Video.find_by_sql(getquery).order("RAND()").first(noofvideos-existinglength)
+      end
 		end		
   			  		
   end
@@ -104,6 +136,11 @@ class Video < ActiveRecord::Base
   def self.addcategoryname(categoryid)
   		result = Category.getcategoryname(categoryid)
   		return result.join("")
+  end
+
+  def self.getvideoduration(videoid)
+      result = Video.where(id: videoid).pluck(:length)
+      return result.join("")      
   end
 
   def self.getrandomnumber(min,max)

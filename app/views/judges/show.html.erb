@@ -1,30 +1,22 @@
- <table>
-  <tr>
-    <th><pre>Title</pre></th>
-    <th><pre>URL</pre></th>
-    <th><pre>Uploaded by</pre></th>
-    <th><pre>Category</pre></th>
-    <th><pre>Date</pre></th>
-    <th><pre>Description</pre></th>
-    <th></th>
-  </tr>
- 
+<font size="3">Showing <%= @videolist.length %> videos for judging</font>
 <% @videolist.each_with_index do |video,index| %>
-  <tr>
-    <td><pre><%= link_to(video.name, video_path(video.id)) %></pre></td>
-    <td><pre><%= video.url %></pre></td>
-    <td><pre><%= @videoinfo.at(index).at(0) %></pre></td>
-    <td><pre><%= @videoinfo.at(index).at(1) %></pre></td>
-  	<td><pre><%= video.upload_date %></pre></td>
-  	<td><pre><%= video.description %></pre></td>
-  </tr>
+<div id="container">
+ <div id="sidebar">
+ <br>
+<font size="5"><%= link_to(video.name, video_path(video.id)) %></font>
+<!-- <font size="3">Uploaded by:<%= @videoinfo.at(index).at(0) %></font> -->
+<br><font size="2.5"><b>Duration:</b> <%= @videoinfo.at(index).at(2) %> min</font>
+<br><font size="2.5"><b>Upload Date:</b> <%= video.upload_date %></font>
+</div>
+<div id="content">
+  <br><font size="2.5"><b>Uploaded by:</b> <%= @videoinfo.at(index).at(0) %></font>
+  <br><font size="2.5"><b>Category:</b> <%= @videoinfo.at(index).at(1) %></font>
+  <br><font size="2.5"><b>Description:</b><br><%= video.description %></font>
+</div>
+</div>
+
 <% end %>
-</table>
-<!--<p align="center">
-	<button class="showmorebutton" style="background-color:#1E90FF">Show More</button>
- 	 <a href="#" class="showmorebutton" style="border: 5px;">Show More</a> 
- </p>
- -->
- <%= button_to "Show More", judge_path(@judge), :method => :get %> 
+
+<br> <%= button_to "Show More", judge_path(@judge), :method => :get %> 
 
 <br>
