@@ -7,8 +7,9 @@ class Judge < ActiveRecord::Base
 	validates :preference, inclusion: %w(All Category Contestant)
 	validates_format_of :email, :with => Authentication::RE_EMAIL_OK, :message => Authentication::MSG_EMAIL_BAD
 	attr_accessor :contestant_first_name
-  attr_accessor :contestant_last_name
-  attr_accessor :category_name
+    attr_accessor :contestant_last_name
+    attr_accessor :category_name
+    has_many :judge_contestants
 
     after_initialize :set_preference
 

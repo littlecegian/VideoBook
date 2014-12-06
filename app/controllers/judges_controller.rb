@@ -33,11 +33,12 @@ class JudgesController < ApplicationController
         contestant = Student.find_by(:first_name=>p_first_name, :last_name=>p_last_name)
 
         if contestant.nil?
-          raise "Error! Student does not exist"
+          flash[:error] = "Error! Student does not exist"
+          redirect_to edit_judge_path(judge) and return
         end
 
         delete_prev_settings(judge)
-        judge_contestant = JudgeContestant.new(judge,contestant)
+        judge_contestant = JudgeContestant.new(:judge_id => judge.id,:student_id => contestant.id)
         judge_contestant.save!
       end
 
@@ -45,10 +46,10 @@ class JudgesController < ApplicationController
       if params[:judge][:preference].eql? "Category"
         
         category_name = params[:judge][:category_name]
-        category = Category.find_by(:name=>category_name)        
+        category = Category.find(category_name)
 
         delete_prev_settings(judge)
-        judge_category = JudgeCategory.new(judge,category)
+        judge_category = JudgeCategory.new(:judge_id => judge.id,:category_id => category.id)
         judge_category.save!
       end
 
@@ -58,7 +59,7 @@ class JudgesController < ApplicationController
       end
 
       # judge preference
-      judge.update_attributes(judge_params)
+      judge.preference = params[:judge][:preference]
       judge.save!
       flash[:notice] = "Settings updated successfully."
       redirect_to(judge_path(judge))

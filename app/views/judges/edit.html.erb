@@ -27,7 +27,8 @@
 					<label> JudgeByCategory </label>
 				</div>
 				<div class="col-xs-6 col-md-10">
-					<%= f.text_field :category_name, :class => 'form-control input-md', :placeholder=>'Category Name' %>
+					<%= f.select :category_name, Category.all.collect{|c| [c.name, c.id]}, {:include_blank => false}, {:class => 'form-control input-lg category_select'} %>
+					<%#= f.text_field :category_name, :class => 'form-control input-md', :placeholder=>'Category Name' %>
 				</div>
 			</div>
 			<div class="row">
