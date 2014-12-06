@@ -10,7 +10,7 @@ default: &default
   reconnect: false
   pool: 5
   username: root
-  password: naresh
+  password: root
 
 development:
   <<: *default
