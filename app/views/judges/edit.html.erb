@@ -1,2 +1,53 @@
 <h1>Judges#edit</h1>
 <p>Find me in app/views/judges/edit.html.erb</p>
+
+<br/><br />
+<div class="container" id="edit_judge_settings_container">
+	<div class="row">		
+		<div class="form_container col-lg-6 col-lg-offset-3">
+			<%= simple_form_for @judge, :url => judge_path(@judge), :method =>:put, :builder => FormWithValidations, :html => {:id => "edit_settings_form", :class => "form"} do |f| %>
+			<legend>
+				Edit my Settings
+			</legend>			
+			<br />
+					
+			<div class="row">				
+				<div class="col-xs-6 col-md-1">					
+					<%= f.radio_button("preference", "All") %>
+				</div>
+				<div class="col-xs-6 col-md-1">
+					<label> All </label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6 col-md-1">
+					<%= f.radio_button("preference", "Category") %>				
+				</div>
+				<div class="col-xs-6 col-md-1">
+					<label> JudgeByCategory </label>
+				</div>
+				<div class="col-xs-6 col-md-10">
+					<%= f.text_field :category_name, :class => 'form-control input-md', :placeholder=>'Category Name' %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6 col-md-1">					
+					<%= f.radio_button("preference", "Contestant") %>
+				</div>
+				<div class="col-xs-6 col-md-1">
+					<label> JudgeByContestantname </label>
+				</div>
+				<div class="col-xs-6 col-md-10">
+					<%= f.text_field :contestant_first_name, :class => 'form-control input-md', :placeholder=>'First Name' %>					
+				</div>
+				<div class="col-xs-6 col-md-15">					
+					<%= f.text_field :contestant_last_name, :class => 'form-control input-md', :placeholder=>'Last Name' %>
+				</div>
+			</div>
+		
+			<%= f.submit "Update my Settings", :class => 'btn btn-lg btn-primary btn-block signup-btn' %>
+			<%= button_tag "Cancel", :class => 'btn btn-lg btn-primary btn-block signup-btn' %>
+			<% end %>
+		</div>
+	</div>
+</div>
