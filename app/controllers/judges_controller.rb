@@ -18,7 +18,31 @@ class JudgesController < ApplicationController
 
   def edit
     id = params[:id]
-    @judge = Judge.find(id)
+    @judge = Judge.find(id)    
+    
+    if @judge.preference == "All"
+      @judge.contestant_first_name = ""
+      @judge.contestant_last_name = ""
+      @judge.category_name = ""
+    end
+    
+    if @judge.preference == "Category"
+      category_id = JudgeCategory.where(:judge_id=>@judge).pluck(:category_id)
+      category = Category.getcategoryname(category_id)[0]      
+      @judge.category_name = category
+      @judge.contestant_first_name = ""
+      @judge.contestant_last_name = ""      
+    end
+    
+    if @judge.preference == "Contestant"
+      contestant_id = JudgeContestant.where(:judge_id=>@judge).pluck(:student_id)      
+      contestant = Student.getstudentname(contestant_id)[0]
+      
+      @judge.contestant_first_name = contestant[0]
+      @judge.contestant_last_name = contestant[1]
+      @judge.category_name = ""
+    end
+    Rails.logger.debug("Judge object : #{@judge.inspect}")
   end
 
   def update
@@ -79,12 +103,12 @@ class JudgesController < ApplicationController
     judgepreference = Judge.getpreference(params[:id])
     @idofjudge = params[:id]
     #byebug
-    if judgepreference.preference == "all"
-        @videolist,@videoinfo = Video.getrandomvideos(noofvideos,"all")
-    elsif judgepreference.preference == "categories"
+    if judgepreference.preference == "All"
+        @videolist,@videoinfo = Video.getrandomvideos(noofvideos,"All")
+    elsif judgepreference.preference == "Category"
         preferredcategories = JudgeCategory.getpreferredcategories(params[:id])
-        @videolist,@videoinfo = Video.getrandomvideos(noofvideos,"categories",preferredcategories)
-    elsif judgepreference.preference == "student"
+        @videolist,@videoinfo = Video.getrandomvideos(noofvideos,"Category",preferredcategories)
+    elsif judgepreference.preference == "Contestant"
         
     end
     #get_preference(params:)

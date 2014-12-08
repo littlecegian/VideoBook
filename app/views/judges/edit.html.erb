@@ -1,53 +1,96 @@
-<h1>Judges#edit</h1>
-<p>Find me in app/views/judges/edit.html.erb</p>
+<script >
+	document.onreadystatechange = function() {
+		if (document.readyState === 'complete') {			
+			if (document.getElementById("judge_preference_category").getAttribute("checked") != null){
+				category_dd = document.getElementById("category-dd");
+				category_dd.style.visibility = "visible";
+				
+				var category = '<%= @judge.category_name %>';
+				var category_id = '<%= Category.where(:name=>@judge.category_name).collect{|c| c.id}[0] %>';				
+				category_dd.value = category_id;				
+			}
+			if (document.getElementById("judge_preference_contestant").getAttribute("checked") != null){
+				document.getElementById("contestant_fn").style.visibility = "visible";
+				document.getElementById("contestant_ln").style.visibility = "visible";		
+			}
+		}
+	}
+		
+	function show_all() {
+		document.getElementById("category-dd").style.visibility = "hidden";
+		document.getElementById("contestant_fn").style.visibility = "hidden";
+		document.getElementById("contestant_ln").style.visibility = "hidden";
+	}
+	
+	function show_category() {
+		document.getElementById("category-dd").style.visibility = "visible";
+		document.getElementById("contestant_fn").style.visibility = "hidden";
+		document.getElementById("contestant_ln").style.visibility = "hidden";
+	}
 
-<br/><br />
+	function show_contestant() {
+		document.getElementById("contestant_fn").style.visibility = "visible";
+		document.getElementById("contestant_ln").style.visibility = "visible";
+		document.getElementById("category-dd").style.visibility = "hidden";
+	}
+	
+</script>
+<script id="judge_json" type="text/json">
+	<%= @judge.to_json %>
+</script>
+
+<br/>
+<br />
 <div class="container" id="edit_judge_settings_container">
-	<div class="row">		
-		<div class="form_container col-lg-6 col-lg-offset-3">
+	<div class="row">
+		<div class="form_container col-lg-12 col-lg-offset-3">
 			<%= simple_form_for @judge, :url => judge_path(@judge), :method =>:put, :builder => FormWithValidations, :html => {:id => "edit_settings_form", :class => "form"} do |f| %>
 			<legend>
 				Edit my Settings
-			</legend>			
+			</legend>
 			<br />
-					
-			<div class="row">				
-				<div class="col-xs-6 col-md-1">					
-					<%= f.radio_button("preference", "All") %>
+
+			<div class="row">
+				<div class="col-lg-1">
+					<%= f.radio_button("preference", "All",{:onclick=>"show_all()"}) %>
 				</div>
-				<div class="col-xs-6 col-md-1">
-					<label> All </label>
+				<div class="col-lg-9">
+					<%= f.label :preference_all, "All" %>
 				</div>
 			</div>
+			<br />
 			<div class="row">
-				<div class="col-xs-6 col-md-1">
-					<%= f.radio_button("preference", "Category") %>				
+				<div class="col-lg-1">
+					<%= f.radio_button("preference", "Category",{:onclick=>"show_category()"})%>
 				</div>
-				<div class="col-xs-6 col-md-1">
-					<label> JudgeByCategory </label>
+				<div class="col-lg-4">
+					<%= f.label :preference_category, "Judge By Category" %>
 				</div>
-				<div class="col-xs-6 col-md-10">
-					<%= f.select :category_name, Category.all.collect{|c| [c.name, c.id]}, {:include_blank => false}, {:class => 'form-control input-lg category_select'} %>
-					<%#= f.text_field :category_name, :class => 'form-control input-md', :placeholder=>'Category Name' %>
+				<div class="col-lg-6" style="visibility: hidden">
+					<%= f.select :category_name, Category.all.collect{|c| [c.name, c.id]}, {:include_blank => false}, {:class => 'form-control input-md category_select',:id=>"category-dd" } %>
+					<!--<%= f.text_field :category_name, :class => 'form-control input-md', :placeholder=>'Category Name' %>-->
 				</div>
 			</div>
+			<br />
 			<div class="row">
-				<div class="col-xs-6 col-md-1">					
-					<%= f.radio_button("preference", "Contestant") %>
+				<div class="col-lg-1">
+					<%= f.radio_button("preference", "Contestant", :onclick=>"show_contestant()")%>
 				</div>
-				<div class="col-xs-6 col-md-1">
-					<label> JudgeByContestantname </label>
+				<div class="col-lg-4">
+					<%= f.label :preference_contestant, "Judge By Contestant" %>
 				</div>
-				<div class="col-xs-6 col-md-10">
-					<%= f.text_field :contestant_first_name, :class => 'form-control input-md', :placeholder=>'First Name' %>					
+				<div  id="contestant_fn" class="col-lg-3" style="visibility: hidden">
+					<%= f.text_field :contestant_first_name, :class => 'form-control input-md', :placeholder=>'First Name' %>
 				</div>
-				<div class="col-xs-6 col-md-15">					
+				<div  id="contestant_ln" class="col-lg-3" style="visibility: hidden">
 					<%= f.text_field :contestant_last_name, :class => 'form-control input-md', :placeholder=>'Last Name' %>
 				</div>
 			</div>
-		
-			<%= f.submit "Update my Settings", :class => 'btn btn-lg btn-primary btn-block signup-btn' %>
-			<%= button_tag "Cancel", :class => 'btn btn-lg btn-primary btn-block signup-btn' %>
+			<br />
+			<div class="row">
+				<%= f.submit "Update my Settings", :class => 'btn btn-lg btn-primary' %>
+				<%= button_tag "Cancel", :class => 'btn btn-lg btn-primary' %>
+			</div>
 			<% end %>
 		</div>
 	</div>
