@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205005213) do
+ActiveRecord::Schema.define(version: 20141209033650) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -61,12 +61,20 @@ ActiveRecord::Schema.define(version: 20141205005213) do
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "student_id"
   end
 
   add_index "judge_categories", ["category_id"], name: "index_judge_categories_on_category_id", using: :btree
   add_index "judge_categories", ["judge_id"], name: "index_judge_categories_on_judge_id", using: :btree
-  add_index "judge_categories", ["student_id"], name: "index_judge_categories_on_student_id", using: :btree
+
+  create_table "judge_contestants", force: true do |t|
+    t.integer  "judge_id"
+    t.integer  "student_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "judge_contestants", ["judge_id"], name: "index_judge_contestants_on_judge_id", using: :btree
+  add_index "judge_contestants", ["student_id"], name: "index_judge_contestants_on_student_id", using: :btree
 
   create_table "judges", force: true do |t|
     t.string   "first_name"

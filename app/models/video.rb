@@ -14,11 +14,11 @@ class Video < ActiveRecord::Base
   #If category = "all" then extraparam is nil
   #else if category = "categories" or "studentid" then extraparam will have all categories/student ids
   def self.getrandomvideos(noofvideos,category,extraparam=[])
-  	if category == "all"
+  	if category == "All"
 	    getquery = "select * from videos where id not in (select video_id from video_ratings)"
 	    records_array = Video.find_by_sql(getquery)
 			return getvideodetails(records_array,noofvideos,category)   
-		elsif category == "categories"
+		elsif category == "Category"
 			#Construct query to select the unjudged videos from the specified categories
 			getquery = "select * from videos where (category_id =  "
 			extraparam.each_with_index do |eachcategory,index|
@@ -32,7 +32,7 @@ class Video < ActiveRecord::Base
 			end
 	    	records_array = Video.find_by_sql(getquery)
 			return getvideodetails(records_array,noofvideos,category,extraparam)			
-    elsif category == "students"
+    elsif category == "Contestant"
         #Construct query to select the unjudged videos uploaded by the specified student ids
       getquery = "select * from videos where (student_id =  "
       extraparam.each_with_index do |eachcategory,index|
@@ -103,7 +103,7 @@ class Video < ActiveRecord::Base
 	    		#onerecorddetails.push(addstudentname(record))
 	    		#onerecorddetails.push(addcategoryname(record.category_id))
           #onerecorddetails.push(getvideoduration(record.id))
-	    		videoinfo.push(onerecorddetails)
+	    		#videoinfo.push(onerecorddetails)
     		end
     	end
     	return result_array
@@ -112,9 +112,9 @@ class Video < ActiveRecord::Base
   #This is used when number of unjudged videos less than required videos to display.
   #So for the remaining videos we display already judged videos
   def self.getjudgedvideos(category,noofvideos,existinglength,extraparam = [])
-  		if category == "all"
+  		if category == "All"
   			return Video.order("RAND()").first(noofvideos-existinglength)
-  		elsif category == "categories"
+  		elsif category == "Category"
   			getquery = "select * from videos where category_id =  "
 			  extraparam.each_with_index do |eachcategory,index|
 				  if(index == 0)
@@ -123,7 +123,7 @@ class Video < ActiveRecord::Base
 					  getquery = getquery + " or category_id = "+ eachcategory.to_s
 				  end
 			  end
-      elsif category == "students"
+      elsif category == "Contestant"
         getquery = "select * from videos where student_id =  "
         extraparam.each_with_index do |eachcategory,index|
           if(index == 0)

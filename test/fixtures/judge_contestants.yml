@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  judge_id: 
+  student_id: 
+
+two:
+  judge_id: 
+  student_id: 

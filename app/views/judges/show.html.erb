@@ -1,5 +1,6 @@
-<font size="3">Showing <%= @videolist.length %> videos for judging</font>
-<% @videolist.each do |video| %>
+
+<font size="3">Showing <%= @videolist.uniq.length %> videos for judging</font>
+<% @videolist.uniq.each do |video| %>
 <div id="container">
  <div id="sidebar">
  <br>
@@ -15,5 +16,6 @@
 <% end %>
 
 <br> <%= button_to "Show More", judge_path(@judge), :method => :get %> 
+
 
 <br>
