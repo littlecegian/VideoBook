@@ -31,13 +31,13 @@ class JudgesController < ApplicationController
     @idofjudge = params[:id]
     #byebug
     if judgepreference.preference == "all"
-        @videolist,@videoinfo = Video.getrandomvideos(noofvideos,"all")
+        @videolist = Video.getrandomvideos(noofvideos,"all")
     elsif judgepreference.preference == "categories"
         preferredcategories = JudgeCategory.getpreferredcategories(params[:id])
-        @videolist,@videoinfo = Video.getrandomvideos(noofvideos,"categories",preferredcategories)
+        @videolist = Video.getrandomvideos(noofvideos,"categories",preferredcategories)
     elsif judgepreference.preference == "students"
         studentids = JudgeCategory.getstudentids(params[:id])
-        @videolist,@videoinfo = Video.getrandomvideos(noofvideos,"students",studentids)
+        @videolist = Video.getrandomvideos(noofvideos,"students",studentids)
     end
     #get_preference(params:)
   end

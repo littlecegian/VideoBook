@@ -1,20 +1,17 @@
 <font size="3">Showing <%= @videolist.length %> videos for judging</font>
-<% @videolist.each_with_index do |video,index| %>
+<% @videolist.each do |video| %>
 <div id="container">
  <div id="sidebar">
  <br>
 <font size="5"><%= link_to(video.name, video_path(video.id)) %></font>
-<!-- <font size="3">Uploaded by:<%= @videoinfo.at(index).at(0) %></font> 
-<br><font size="2.5"><b>Duration:</b> <%= @videoinfo.at(index).at(2) %> min</font>-->
 <br><font size="2.5"><b>Upload Date:</b> <%= video.video_updated_at %></font>
 </div>
 <div id="content">
-  <br><font size="2.5"><b>Uploaded by:</b> <%= @videoinfo.at(index).at(0) %></font>
-  <br><font size="2.5"><b>Category:</b> <%= @videoinfo.at(index).at(1) %></font>
+  <br><font size="2.5"><b>Uploaded by:</b> <%= video.student.first_name + ' ' + video.student.last_name %></font>
+  <br><font size="2.5"><b>Category:</b> <%= video.category.name %></font>
   <br><font size="2.5"><b>Description:</b><br><%= video.description %></font>
 </div>
 </div>
-
 <% end %>
 
 <br> <%= button_to "Show More", judge_path(@judge), :method => :get %> 

@@ -24,3 +24,52 @@ div#judge_signup_form_container{
 	}
 
 }
+
+div#video_upload_form_container{
+	margin-top: 30px;
+	margin-left: 10%;
+
+	form#video_upload{
+		
+		ul.round-border{
+			background-color: #f2dede;
+			border-radius: 10px;
+			padding: 20px;
+			margin-top: 10px;
+			margin-botton: 10px;
+			list-style-type: none;
+		}
+
+		span.title-error{
+			font-weight: bold;
+		}
+
+		select.category_select{
+			padding: 10px;
+			box-sizing: border-box;
+			width: 40%;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		input.upload_video_button{
+			color: white;
+			background-color: #3071a9;
+			border-color: #285e8e;
+			padding: 10px 16px;
+			font-size: 18px;
+			line-height: 1.33;
+			border-radius: 6px;
+			margin-top: 20px;
+		}
+	}
+
+	span.title{
+		width: 100%;
+		float: left;
+		font-size: 20px;
+		font-weight: bold;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}	
+}

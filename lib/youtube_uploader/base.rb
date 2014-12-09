@@ -28,25 +28,9 @@ module YoutubeUploader
       return client, youtube
     end
 
-    def upload(opts = {:title => 'test_upload', :description => 'please work', 
-      :keywords => "test,work", :file => "#{Rails.root.to_s}/tmp/orochimaru.mp4",
-      :category_id => 22, :privacy_status => 'public'})
-      # opts = Trollop::options do
-      #   opt :file, 'Video file to upload', :type => String
-      #   opt :title, 'Video title', :default => 'Test Title', :type => String
-      #   opt :description, 'Video description',
-      #         :default => 'Test Description', :type => String
-      #   opt :category_id, 'Numeric video category. See https://developers.google.com/youtube/v3/docs/videoCategories/list',
-      #         :default => 22, :type => :int
-      #   opt :keywords, 'Video keywords, comma-separated',
-      #         :default => '', :type => String
-      #   opt :privacy_status, 'Video privacy status: public, private, or unlisted',
-      #         :default => 'public', :type => String
-      # end
-
-      # if opts[:file].nil? or not File.file?(opts[:file])
-      #   Trollop::die :file, 'does not exist'
-      # end
+    def upload(opts)
+      default_opts = {:keywords => "", :category_id => 22, :privacy_status => 'public'}
+      opts.merge!(default_opts)
 
       client, youtube = get_authenticated_service
 
@@ -76,6 +60,7 @@ module YoutubeUploader
         videos_insert_response.resumable_upload.send_all(client)
 
         puts "Video id '#{videos_insert_response.data.id}' was successfully uploaded."
+        return videos_insert_response
       rescue Google::APIClient::TransmissionError => e
         puts e.result.body
       end

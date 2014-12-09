@@ -12,6 +12,7 @@ default: &default
   username: root
   password: naresh
 
+
 development:
   <<: *default
   database: videobook_development
