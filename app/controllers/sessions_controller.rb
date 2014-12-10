@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 			return
 		end
 		@login_type = params[:login_type] || "student"  #default login is for student
-		@placeholder = params[:login_type] == "judge" ? "Email" : "UIN"			
+		@placeholder = "Email"			
 	end
 
 	def create
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
 				render :action => :new
 			end
 		else
-			student = Student.find_by_uin(login_id)
+			student = Student.find_by_email(login_id)
 			if student
 				redirect_to student_dashboard_path(student)
 				session[:user_id] = student.id

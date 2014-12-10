@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206015033) do
+ActiveRecord::Schema.define(version: 20141210211731) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20141206015033) do
     t.integer  "video_id"
     t.integer  "judge_id"
     t.integer  "criteria_id"
-    t.decimal  "score",       precision: 10, scale: 2
+    t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

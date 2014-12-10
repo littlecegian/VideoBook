@@ -5,92 +5,41 @@
 <font size="4">Please rate the video on scale of 1 to 5 for each criteria with 1 being the lowest and 5 the highest ratings.</font>
 </div>
 
-<div align ="center"; style="width:400px; margin-right:620px;margin-top:100px; margin-left:auto;">
-	
-	<form action="/video_ratings" method="post">
+<div align ="center" class="clearfix" style="width:400px; margin-right:620px;margin-top:10px; margin-left:auto;">
+
+	<form id="video_ratings_form" action="/video_ratings" method="post">
 	<table name ="table_rating" cellpadding="4" width="500" border="0">
   	
-  	<tr>
-  		<td>
-  		<font size="4">Criteria One</font>
-  		</td>
-  		<td>
-	    <input type="radio" name="criteria_1" value="1" id="one_one"/>
-	    <label for="one_one">1</label>
-		</td>
-		<td>
-	    <input type="radio"  name="criteria_1" value="2" id="one_two" />
-	    <label for="one_two">2</label>
-		</td>
-		<td>
-	    <input type="radio"  name="criteria_1" value="3" id="one_three" />
-	    <label for="one_three">3</label>
-	    </td>
-		<td>
-	    <input type="radio"  name="criteria_1" value="4" id="one_four" />
-	    <label for="one_four">4</label>
-	    </td>
-		<td>
-	    <input type="radio"  name="criteria_1" value="5" id="one_five" />
-	    <label for="one_five">5</label>
-	    </td>
-	</tr>
- 
-    <tr style="height:100px;">
-  		<td>
-  		<font size="4">Criteria Two</font>
-  		</td>
-  		<td>
-	    <input type="radio" name="criteria_2" value="1" id="two_one"/>
-	    <label for="two_one">1</label>
-		</td>
-		<td>
-	    <input type="radio"  name="criteria_2" value="2" id="two_two" />
-	    <label for="two_two">2</label>
-		</td>
-		<td>
-	    <input type="radio"  name="criteria_2" value="3" id="two_three" />
-	    <label for="two_three">3</label>
-	    </td>
-		<td>
-	    <input type="radio"  name="criteria_2" value="4" id="two_four" />
-	    <label for="two_four">4</label>
-	    </td>
-		<td>
-	    <input type="radio"  name="criteria_2" value="5" id="two_five" />
-	    <label for="two_four">5</label>
-	    </td>
-	</tr>
-	<tr style="height:40px;">
-  		<td>
-  		<font size="4">Criteria Three</font>
-  		</td>
-  		<td>
-	    <input type="radio" name="criteria_3" value="1" id="three_one" />
-	    <label for="three_one">1</label>
-		</td>
-		<td>
-	    <input type="radio"  name="criteria_3" value="2" id="three_two" />
-	    <label for="three_two">2</label>
-		</td>
-		<td>
-	    <input type="radio"  name="criteria_3" value="3" id="three_three" />
-	    <label for="three_three">3</label>
-	    </td>
-		<td>
-	    <input type="radio"  name="criteria_3" value="4" id="three_four" />
-	    <label for="three_four">4</label>
-	    </td>
-		<td>
-	    <input type="radio"  name="criteria_3" value="5" id="three_five" />
-	    <label for="three_five">5</label>
-	    </td>
-	</tr>
-	    <input type="hidden" name="video_id" value= <%= @video.id %> >
-<tr style="height:80px;">
-		<td>
-			<button type="submit" style="margin-top:10px">Submit</button>
-		</td>
+  	<% Criteria.all.each do |crit| %>
+  		<tr class = "tr_video_rating">
+	  		<td>
+	  		<font size="4"><%= crit.name %></font>
+	  		</td>
+	  		<td>
+		    <input type="radio" name="<%= crit.name %>" value="1" id="one_one"/>
+		    <label for="one_one">1</label>
+			</td>
+			<td>
+		    <input type="radio"  name="<%= crit.name %>" value="2" id="one_two" />
+		    <label for="one_two">2</label>
+			</td>
+			<td>
+		    <input type="radio"  name="<%= crit.name %>" value="3" id="one_three" />
+		    <label for="one_three">3</label>
+		    </td>
+			<td>
+		    <input type="radio"  name="<%= crit.name %>" value="4" id="one_four" />
+		    <label for="one_four">4</label>
+		    </td>
+			<td>
+		    <input type="radio"  name="<%= crit.name %>" value="5" id="one_five" />
+		    <label for="one_five">5</label>
+		    </td>
+		</tr>
+ 	<% end %>
+    <input type="hidden" name="video_id" value= <%= @video.id %> >
+	<tr style="height:80px;">
+		<td> <button type="submit" style="margin-top:10px"> Submit </button> </td>
 	</tr>
 </table>
 </form>
