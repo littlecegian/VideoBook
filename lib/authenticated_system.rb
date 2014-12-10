@@ -6,6 +6,10 @@ module AuthenticatedSystem
       !!current_user
     end
 
+    def judge_logged_in?
+        logged_in? && session[:user_type] == 'judge'
+    end
+
     def current_user
     	return nil if session[:user_type].nil?
     	if session[:user_type] == 'judge'

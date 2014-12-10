@@ -1,5 +1,5 @@
 development: &non_production_settings
-  number_of_videos_per_load: 4
+  number_of_videos_per_load: 5
 
 test: &test
   <<: *non_production_settings

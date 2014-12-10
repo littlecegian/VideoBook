@@ -84,6 +84,7 @@ class Video < ActiveRecord::Base
       		end
         end
     		tmp_array = getjudgedvideos(category,noofvideos,records_array.length,extraparam)
+        tmp_array = [] #temp fix to not show videos judged by a judge himself
         if tmp_array.length > 0          
       		tmp_array.each do |tmp_record|
             #byebug

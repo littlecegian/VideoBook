@@ -1,21 +1,20 @@
 
-<font size="3">Showing <%= @videolist.uniq.length %> videos for judging</font>
-<% @videolist.uniq.each do |video| %>
-<div id="container">
- <div id="sidebar">
- <br>
-<font size="5"><%= link_to(video.name, video_path(video.id)) %></font>
-<br><font size="2.5"><b>Upload Date:</b> <%= video.video_updated_at %></font>
+<div id="videolist_container" class="clearfix">
+	<font size="3">Showing <%= @videolist.uniq.length %> videos for judging</font>
+	<% @videolist.uniq.each do |video| %>
+		<div id="container">
+			<div id="sidebar">
+			<br>
+				<font size="5"><%= link_to(video.name, video_path(video.id)) %></font>
+				<br><font size="2.5"><b>Upload Date:</b> <%= video.video_updated_at %></font>
+			</div>
+			<div id="content">
+				<br><font size="2.5"><b>Uploaded by:</b> <%= video.student.first_name + ' ' + video.student.last_name %></font>
+				<br><font size="2.5"><b>Category:</b> <%= video.category.name %></font>
+				<br><font size="2.5"><b>Description:</b><br><%= video.description %></font>
+			</div>
+		</div>
+	<% end %>
+	<br> <%= button_to "Show More", judge_path(@judge), :method => :get %> 
+	<br>
 </div>
-<div id="content">
-  <br><font size="2.5"><b>Uploaded by:</b> <%= video.student.first_name + ' ' + video.student.last_name %></font>
-  <br><font size="2.5"><b>Category:</b> <%= video.category.name %></font>
-  <br><font size="2.5"><b>Description:</b><br><%= video.description %></font>
-</div>
-</div>
-<% end %>
-
-<br> <%= button_to "Show More", judge_path(@judge), :method => :get %> 
-
-
-<br>
