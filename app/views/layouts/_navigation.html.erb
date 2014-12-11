@@ -18,6 +18,9 @@
         <%= link_to 'Logout', session_path(current_user.id), :method => :delete, class: 'navbar-brand logout_button' %>
         <% if judge_logged_in? %>
           <%= link_to 'Edit My Settings', edit_judge_path(current_user.id), :method => :get, class: 'navbar-brand logout_button' %>
+          <% if current_user.admin? %>
+            <%= link_to 'Admin', '/admin/', :method => :get, class: 'navbar-brand logout_button' %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
