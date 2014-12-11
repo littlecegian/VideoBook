@@ -79,4 +79,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+  HOST_NAME = "vast-woodland-6741.herokuapp.com"
+  VIDEO_STORAGE_OPTIONS = {:processors => [:ffmpeg], :url => "/system/:attachment/:id/:basename.:extension"}
 end
