@@ -33,7 +33,6 @@ gem 'rails_admin'
 gem 'bootstrap-sass'
 
 gem 'devise'
-gem 'devise_invitable'
 
 gem 'cancan'
 # Use ActiveModel has_secure_password

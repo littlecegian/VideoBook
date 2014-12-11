@@ -62,9 +62,6 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise_invitable (1.4.0)
-      actionmailer (>= 3.2.6, < 5)
-      devise (>= 3.2.0)
     email_regex (0.0.1)
     erubis (2.7.0)
     execjs (2.2.2)
@@ -225,7 +222,6 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 4.0.0)
   devise
-  devise_invitable
   email_regex
   google-api-client
   httpclient
