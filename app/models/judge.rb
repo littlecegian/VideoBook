@@ -25,4 +25,8 @@ class Judge < ActiveRecord::Base
     	return Judge.find_by_email(emailid)
     end
 
+    def admin?
+        self.admin
+    end
+
 end

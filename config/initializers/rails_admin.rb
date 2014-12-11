@@ -16,6 +16,11 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
   config.included_models = [Student, Category, Criteria, Judge, Video, VideoRating]
+
+  config.authorize_with :cancan
+  
+  config.current_user_method &:current_user
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

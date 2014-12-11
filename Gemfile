@@ -27,12 +27,12 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
+
 gem 'rails_layout',	group: :development
+
 gem 'rails_admin'
 
 gem 'bootstrap-sass'
-
-gem 'devise'
 
 gem 'cancan'
 # Use ActiveModel has_secure_password
@@ -56,3 +56,5 @@ gem 'google-api-client'
 gem 'httpclient'
 
 gem 'paperclip-ffmpeg'
+
+gem 'cancan'

@@ -12,4 +12,8 @@ class Student < ActiveRecord::Base
 		#byebug
 		return result
 	end
+
+	def admin?
+        false
+    end
 end
