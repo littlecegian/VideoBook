@@ -53,6 +53,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     columnize (0.8.9)
+    daemon_controller (1.2.0)
     debugger-linecache (1.2.0)
     email_regex (0.0.1)
     erubis (2.7.0)
@@ -113,6 +114,10 @@ GEM
     paperclip-ffmpeg (1.2.0)
       paperclip (>= 2.5.2)
       rails
+    passenger (4.0.55)
+      daemon_controller (>= 1.2.0)
+      rack
+      rake (>= 0.8.1)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-pjax (0.8.0)
@@ -214,6 +219,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   paperclip-ffmpeg
+  passenger
   rails (= 4.1.4)
   rails_admin
   rails_layout

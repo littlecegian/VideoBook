@@ -57,4 +57,4 @@ gem 'httpclient'
 
 gem 'paperclip-ffmpeg'
 
-gem 'cancan'
+gem 'passenger'
