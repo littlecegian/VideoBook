@@ -26,5 +26,8 @@ test:
 
 production:
   <<: *default
-  password: root
   database: videobook_production
+  username: root
+  host: videobook.cgwhsbemk8q0.us-west-2.rds.amazonaws.com
+  password: videobook
+  port: 3306  
